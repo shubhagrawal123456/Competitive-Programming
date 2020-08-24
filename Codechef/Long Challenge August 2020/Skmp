@@ -1,0 +1,96 @@
+#include <iostream>
+using namespace std;
+#include<bits/stdc++.h>
+using namespace std;
+#define all(x) (x).begin(), (x).end()
+typedef pair<int, int> pii;
+typedef pair<double, double> pdd;
+typedef vector<double> vd;
+typedef vector<bool> vb;
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+typedef vector<vvi> vvvi;
+typedef vector<string> vs;
+#define ios                         ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define fori(n) for(int i=0; i<int(n); i++)
+#define cins(s) string s; cin>>s;
+#define cini(i) int i; cin>>i;
+#define cind(d) double d; cin>>d;
+#define cinai(a, n) vi a(n); fori(n) { cin>>a[i]; }
+#define cinas(s, n) vs s(n); fori(n) { cin>>s[i]; }
+#define cinad(a, n) vd a(n); fori(n) { cin>>a[i]; }
+#define watch(x) cout << (#x) << " is " << (x) << endl
+#define see(x) cout << (x) << " ";
+#define hh cout << "\n";
+typedef long long int ll;
+#define vll vector < ll > 
+#define fo(i, n) for(i=0; i<n; i++)
+#define Fo(i, k, n) for(i=k; i>=n; i--)
+ll t;
+int main() {
+cin>>t;
+while(t--)
+	{
+	   	string str3,str1,str2,res;
+		cin>>str1>>str2;
+		ll x=str1.size(),y=str2.size();
+		ll lex1[100], lex2[100];
+		memset(lex1,0,sizeof(lex1));
+		for(int i=0;i<x;i++)
+			lex1[str1[i]-'a']++;
+		
+		for(int i=0;i<y;i++)
+			lex1[str2[i]-'a']--;
+		
+		for(int i=0;i<26;i++)
+		lex2[i]=lex1[i];
+		
+		for(int i=0;i<=(str2[0]-'a');i++)
+		{   
+			while(lex1[i]>0)
+			{  int j=(char)(i+97);
+			    res+=j;
+				lex1[i]--;
+				
+			}
+		
+		}
+		res+=str2;
+		int i=0,j=0;
+		while(i<26)
+		{
+			while(lex1[i]>0)
+			{  
+				j=(char)(i+97);
+				res+=j;
+				lex1[i]--;
+			}
+			i++;
+		}
+		 i=0;
+		while(i<str2[0]-'a')
+		{
+			while(lex2[i]!=0)
+			{
+				j=(char)(i+97);
+				str3+= j;
+				lex2[i]--;
+			}
+			i++;
+		}
+		i=0;
+		str3+=str2;
+		while(i<26)
+		{
+			while(lex2[i]!=0)
+			{
+				j=(char)(i+97);
+				str3+=j;
+				lex2[i]--;
+			}
+			i++;
+		}
+		cout<<min(res,str3)<<endl;
+	}
+	return 0;
+}
