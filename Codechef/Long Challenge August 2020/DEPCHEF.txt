@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main(void)
+{
+		int T;
+	scanf("%d\n", &T);
+
+	for (int i = 0; i < T; i++)
+	{
+		int N=0 ;
+		
+		 int temp=0;
+		 int x=-1;
+		scanf("%d\n",&N);
+
+		 int a[N], d[N];
+		for (int j = 0; j < N; j++)
+		{
+			scanf("%d", &a[j]);
+		}
+		for (int j = 0; j < N; j++)
+		{
+			scanf("%d", &d[j]);
+		}
+
+		for (int j = 0; j < N; j++)
+		{
+		    temp=d[j]-a[(j+1)%N]-a[(N+j-1)%N] ;
+		    
+		    if(temp>0 && d[j]>=-1 && x<d[j])
+		    {
+		        x=d[j];
+		    }
+		    else
+		    {
+		        temp=0;    
+		    }
+		    
+		}
+	
+			printf("%d\n", x);
+	
+	}
+	return 0;
+}
